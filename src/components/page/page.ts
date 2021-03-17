@@ -1,14 +1,8 @@
-export class PageComponent {
-  private element: HTMLUListElement;
-  constructor() {
-    this.element = document.createElement("ul");
-    this.element.setAttribute("class", "page");
-    this.element.textContent = "This is PageComponent";
-  }
+import { BaseComponent } from "./component.js";
 
-  // InsertPosition은 4가지 union type이 있고 어디에 추가할 수 있는지 지정 가능.
-  attachTo(parent: HTMLElement, position: InsertPosition = "afterbegin") {
-    // insertAdjacentElement는 position에 Element 추가.
-    parent.insertAdjacentElement(position, this.element);
+export class PageComponent extends BaseComponent<HTMLUListElement> {
+  constructor() {
+    // 여기서 super는 extends한 BaseComponent에 constructor. => htmlString 인자가 필요함
+    super('<ul class="page">This is PageComponent!</ul>');
   }
 }
